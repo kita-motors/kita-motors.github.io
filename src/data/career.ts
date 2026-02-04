@@ -9,11 +9,11 @@ export interface CareerItem {
 export const career: CareerItem[] = [
   {
     period: '現在',
-    title: '総務課 課長',
+    title: '総務課 チームリーダー',
     company: '小売・卸売業（従業員50〜100名）',
     description: '総務部門のマネジメントとDX推進を担当。業務効率化と組織力強化を両立しながら、担当業務の範囲を大幅に拡大。',
     highlights: [
-      '課長就任後、離職者ゼロ（寿退社除く）を継続',
+      'チームリーダー就任後、離職者ゼロ（寿退社除く）を継続',
       '複数のDXツール導入をPOとして推進（LINE WORKS、SmartHR、Bill One等）',
       '基幹システム刷新プロジェクトのPO（要件定義〜受入テスト）',
       'AIツールを活用した業務支援システムを自作・導入',
