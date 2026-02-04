@@ -8,7 +8,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'DXコンサルタント・総務マネージャーとしてのポートフォリオサイト' } = Astro.props;
+const { title, description = '総務課長のポートフォリオサイト' } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -23,7 +23,7 @@ const currentPath = Astro.url.pathname;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <title>{title} | Portfolio</title>
