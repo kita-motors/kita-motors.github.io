@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  date: string;
+  url?: string;
+  slug: string;
+}
+
+const { title, description, tags, date, url, slug } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+});
+---
+
+<article class="group bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow">
+  <div class="p-6">
+    <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
+      <time datetime={date}>{formattedDate}</time>
+    </div>
+
+    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+      <a href={`/projects/${slug}`} class="hover:underline">
+        {title}
+      </a>
+    </h3>
+
+    <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+      {description}
+    </p>
+
+    <div class="flex flex-wrap gap-2 mb-4">
+      {
+        tags.map((tag) => (
+          <span class="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a
+        href={`/projects/${slug}`}
+        class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
+      >
+        詳しく見る →
+      </a>
+      {
+        url && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:underline"
+          >
+            サイトを見る ↗
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>

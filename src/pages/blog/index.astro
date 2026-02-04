@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// タグ一覧を取得
+const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))].sort();
+---
+
+<BaseLayout title="ブログ" description="技術やDXに関する記事を発信しています。">
+  <section class="py-12">
+    <div class="container">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        ブログ
+      </h1>
+      <p class="text-gray-600 dark:text-gray-300 mb-8">
+        技術やDXに関する知見を発信しています。
+      </p>
+
+      <!-- Tags -->
+      {allTags.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+            タグで絞り込み
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            {allTags.map((tag) => (
+              <a
+                href={`/blog?tag=${tag}`}
+                class="px-3 py-1 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Blog Posts -->
+      <div class="space-y-6">
+        {
+          sortedPosts.map((post) => (
+            <article class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-shadow">
+              <div class="flex flex-wrap gap-2 mb-3">
+                {post.data.tags.map((tag) => (
+                  <span class="px-2 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                {post.data.description}
+              </p>
+              <div class="flex items-center justify-between">
+                <time
+                  class="text-sm text-gray-500 dark:text-gray-400"
+                  datetime={post.data.date.toISOString()}
+                >
+                  {post.data.date.toLocaleDateString('ja-JP', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
+                >
+                  続きを読む →
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      {sortedPosts.length === 0 && (
+        <div class="text-center py-12">
+          <p class="text-gray-500 dark:text-gray-400">
+            記事はまだ投稿されていません。
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

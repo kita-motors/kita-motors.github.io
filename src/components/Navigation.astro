@@ -1,0 +1,61 @@
+---
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'ホーム' },
+  { href: '/about', label: '自己紹介' },
+  { href: '/projects', label: '実績' },
+  { href: '/skills', label: 'スキル' },
+  { href: '/blog', label: 'ブログ' },
+  { href: '/contact', label: 'お問い合わせ' },
+];
+
+function isActive(href: string, currentPath: string): boolean {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<nav class="hidden md:flex items-center gap-6">
+  {
+    navItems.map((item) => (
+      <a
+        href={item.href}
+        class:list={[
+          'text-sm font-medium transition-colors',
+          isActive(item.href, currentPath)
+            ? 'text-primary-600 dark:text-primary-400'
+            : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100',
+        ]}
+      >
+        {item.label}
+      </a>
+    ))
+  }
+</nav>
+
+<nav id="mobile-nav" class="hidden md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 py-4">
+  <div class="container flex flex-col gap-4">
+    {
+      navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'text-sm font-medium transition-colors',
+            isActive(item.href, currentPath)
+              ? 'text-primary-600 dark:text-primary-400'
+              : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+  </div>
+</nav>

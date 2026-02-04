@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+
+const featuredProjects = allProjects
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const latestPosts = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="ホーム">
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+    <div class="container text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+        DX × マネジメント で<br />組織の課題を解決する
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+        DXコンサルタント / 総務マネージャー として、<br />
+        テクノロジーと組織運営の両面からビジネスを支援します。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/about"
+          class="px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
+        >
+          詳しく見る
+        </a>
+        <a
+          href="/contact"
+          class="px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-medium rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        >
+          お問い合わせ
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strengths Section -->
+  <section class="py-16">
+    <div class="container">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 text-center mb-12">
+        強み
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center">
+            <svg class="w-8 h-8 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">DXコンサルティング</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            業務プロセスの可視化から、最適なデジタルソリューションの選定・導入まで一貫して支援します。
+          </p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center">
+            <svg class="w-8 h-8 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">システム開発</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            モダンな技術スタックを用いて、業務効率化ツールやWebアプリケーションを開発します。
+          </p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center">
+            <svg class="w-8 h-8 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">組織改革</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            総務マネージャーとしての経験を活かし、組織の課題解決とチームビルディングを推進します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          主なプロジェクト
+        </h2>
+        <a
+          href="/projects"
+          class="text-primary-600 dark:text-primary-400 hover:underline"
+        >
+          すべて見る →
+        </a>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          featuredProjects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              date={project.data.date.toISOString()}
+              url={project.data.url}
+              slug={project.slug}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Blog Posts Section -->
+  <section class="py-16">
+    <div class="container">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          最新のブログ
+        </h2>
+        <a
+          href="/blog"
+          class="text-primary-600 dark:text-primary-400 hover:underline"
+        >
+          すべて見る →
+        </a>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          latestPosts.map((post) => (
+            <article class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-shadow">
+              <div class="flex flex-wrap gap-2 mb-3">
+                {post.data.tags.slice(0, 3).map((tag) => (
+                  <span class="px-2 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
+                <a href={`/blog/${post.slug}`} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  {post.data.title}
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 mb-3">
+                {post.data.description}
+              </p>
+              <time class="text-sm text-gray-500 dark:text-gray-400" datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
