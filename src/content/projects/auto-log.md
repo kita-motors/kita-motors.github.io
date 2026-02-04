@@ -3,7 +3,6 @@ title: "Auto Log"
 description: "車とバイクの給油記録・メンテナンス管理を行うAndroidアプリ。燃費自動計算、リマインダー通知、データのエクスポート/インポートに対応。"
 tags: ["Kotlin", "Android", "Room", "MVVM", "WorkManager"]
 date: 2026-02-02
-url: "https://github.com/kita-motors/auto-log"
 ---
 
 ## プロジェクト概要
