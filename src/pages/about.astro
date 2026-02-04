@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { career, qualifications } from '../data/career';
 ---
 
-<BaseLayout title="自己紹介" description="DXコンサルタント・総務マネージャーとしての経歴とスキルを紹介します。">
+<BaseLayout title="自己紹介" description="総務課長として組織マネジメントとDX推進を担当。現場経験を活かした業務改善と、AIツールを活用した自作システム開発が強みです。">
   <section class="py-12">
     <div class="container">
       <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">
@@ -16,18 +16,26 @@ import { career, qualifications } from '../data/career';
           <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             プロフィール
           </h2>
-          <div class="prose max-w-none">
+          <div class="prose max-w-none space-y-4">
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-              DXコンサルタント兼総務マネージャーとして、テクノロジーと組織運営の両面から企業の課題解決に取り組んでいます。
+              小売・卸売業（従業員50〜100名）の総務課長として、組織マネジメントとDX推進を担当しています。
+              営業・販売部門での現場経験を経て総務部門へ異動し、現在は4〜10名のチームを率いています。
             </p>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-              情報システム部門での経験を経て、現在は社内DXの推進と総務部門のマネジメントを担当。
-              業務プロセスの可視化・改善から、AIチャットボットなどの新しいソリューションの導入まで、
-              幅広い領域で組織の生産性向上に貢献しています。
+              課長就任以降、LINE WORKS・SmartHR・Bill Oneなどの各種SaaSの導入推進、
+              基幹システム刷新プロジェクトのPO（要件定義〜受入テスト）、
+              AIチャットボットや勤怠サポートボットなど業務支援システムの自作・導入など、
+              幅広いDX施策を推進してきました。
+              また、人事評価制度の策定や採用業務の取りまとめなど、担当領域を大幅に拡大しています。
             </p>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-              「技術を使いこなせる組織づくり」をモットーに、単なるツール導入にとどまらず、
-              組織文化やワークフローの変革まで見据えた支援を心がけています。
+              マネジメント面では、課長就任後の離職者ゼロ（寿退社除く）を継続中です。
+              業務効率化と組織力強化の両立を目指し、現場視点を大切にした改善活動に取り組んでいます。
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              技術面では、Claude CodeなどのAIツールを積極的に活用しています。
+              プログラミングの専門家ではありませんが、要件定義・仕様設計のスキルとAIの力を組み合わせることで、
+              実用的なシステムを構築できることが強みです。
             </p>
           </div>
         </div>
@@ -81,26 +89,28 @@ import { career, qualifications } from '../data/career';
         </div>
       </div>
 
-      <!-- Qualifications -->
-      <div>
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-          保有資格
-        </h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {
-            qualifications.map((qual) => (
-              <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4">
-                <h3 class="font-medium text-gray-900 dark:text-gray-100 mb-1">
-                  {qual.name}
-                </h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {qual.year}取得
-                </p>
-              </div>
-            ))
-          }
+      <!-- Qualifications (only show if there are any) -->
+      {qualifications.length > 0 && (
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+            保有資格
+          </h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {
+              qualifications.map((qual) => (
+                <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+                  <h3 class="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                    {qual.name}
+                  </h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    {qual.year}取得
+                  </p>
+                </div>
+              ))
+            }
+          </div>
         </div>
-      </div>
+      )}
     </div>
   </section>
 </BaseLayout>

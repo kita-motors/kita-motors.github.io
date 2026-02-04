@@ -8,25 +8,27 @@ export interface CareerItem {
 
 export const career: CareerItem[] = [
   {
-    period: '2020年 - 現在',
-    title: 'DXコンサルタント / 総務マネージャー',
-    company: '現職',
-    description: '社内DX推進および総務部門のマネジメントを担当。業務効率化システムの企画・導入から運用まで一貫して推進。',
+    period: '現在',
+    title: '総務課 課長',
+    company: '小売・卸売業（従業員50〜100名）',
+    description: '総務部門のマネジメントとDX推進を担当。業務効率化と組織力強化を両立しながら、担当業務の範囲を大幅に拡大。',
     highlights: [
-      '社内AIチャットボット「おしえてタケヤくん」の企画・開発・導入',
-      'ペーパーレス化による年間コスト30%削減を達成',
-      '総務部門のチームビルディングと業務改革を主導',
+      '課長就任後、離職者ゼロ（寿退社除く）を継続',
+      '複数のDXツール導入をPOとして推進（LINE WORKS、SmartHR、Bill One等）',
+      '基幹システム刷新プロジェクトのPO（要件定義〜受入テスト）',
+      'AIツールを活用した業務支援システムを自作・導入',
+      '人事評価制度の策定（外部コンサルと共同）',
+      '採用業務・経理業務の取りまとめを担当領域に追加',
     ],
   },
   {
-    period: '2015年 - 2020年',
-    title: '情報システム担当',
-    company: '前職',
-    description: '社内インフラの管理・運用、および業務システムの導入・保守を担当。',
+    period: '以前',
+    title: '営業・販売部門',
+    company: '同社',
+    description: '営業・販売業務を担当。現場での経験を経て総務部門へ異動。',
     highlights: [
-      '基幹システムのクラウド移行プロジェクトを推進',
-      '社内ヘルプデスクの立ち上げと運用体制構築',
-      'セキュリティポリシーの策定と社内教育の実施',
+      '現場視点での業務理解',
+      '社内の様々な部署との連携経験',
     ],
   },
 ];
@@ -36,8 +38,4 @@ export interface Qualification {
   year: string;
 }
 
-export const qualifications: Qualification[] = [
-  { name: '基本情報技術者', year: '2016年' },
-  { name: '応用情報技術者', year: '2018年' },
-  { name: 'AWS認定ソリューションアーキテクト アソシエイト', year: '2022年' },
-];
+export const qualifications: Qualification[] = [];
