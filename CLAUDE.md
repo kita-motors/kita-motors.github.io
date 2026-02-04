@@ -2,8 +2,8 @@
 
 ## プロジェクト概要
 
-DXコンサルタント・総務マネージャーとしてのポートフォリオサイト。
-技術発信（ブログ）、実績紹介、経歴書を兼ねたオールインワンのサイト。
+総務課長としてのポートフォリオサイト。
+実績紹介、経歴書を兼ねたサイト。ブログはnote等の外部サービスを利用予定。
 
 ## 技術スタック
 
@@ -32,18 +32,16 @@ DXコンサルタント・総務マネージャーとしてのポートフォリ
 │   │   ├── Header.astro
 │   │   ├── Footer.astro
 │   │   ├── Navigation.astro
-│   │   ├── ProjectCard.astro
-│   │   └── SkillBadge.astro
+│   │   └── ProjectCard.astro
 │   ├── layouts/
 │   │   ├── BaseLayout.astro # 全ページ共通レイアウト（head, header, footer）
 │   │   └── BlogLayout.astro # ブログ記事用レイアウト
 │   ├── pages/
 │   │   ├── index.astro      # トップページ
-│   │   ├── about.astro      # 自己紹介・経歴
-│   │   ├── projects.astro   # 実績・プロジェクト一覧
-│   │   ├── skills.astro     # スキル一覧
+│   │   ├── about.astro      # 自己紹介・経歴・実績
+│   │   ├── projects.astro   # プロジェクト一覧
 │   │   ├── blog/
-│   │   │   └── index.astro  # ブログ一覧
+│   │   │   └── index.astro  # ブログ一覧（将来的にnote連携予定）
 │   │   └── contact.astro    # お問い合わせ
 │   ├── content/
 │   │   ├── blog/            # ブログ記事（Markdownファイル）
@@ -51,7 +49,6 @@ DXコンサルタント・総務マネージャーとしてのポートフォリ
 │   ├── styles/
 │   │   └── global.css       # グローバルCSS（Tailwindインポート）
 │   └── data/
-│       ├── skills.ts        # スキルデータ
 │       └── career.ts        # 経歴データ
 ├── .github/
 │   └── workflows/
@@ -72,17 +69,14 @@ DXコンサルタント・総務マネージャーとしてのポートフォリ
 
 ### 自己紹介・経歴 (about.astro)
 - プロフィール文
+- 主な実績（DX・システム / マネジメントの2カテゴリ）
 - 職務経歴のタイムライン表示
-- 保有資格・学歴
+- 保有資格（あれば表示）
 
-### 実績・プロジェクト (projects.astro)
+### プロジェクト (projects.astro)
 - カード形式でプロジェクト一覧を表示
 - 各プロジェクトはMarkdownファイルで管理（src/content/projects/）
-- frontmatterに title, description, tags, date, thumbnail を持つ
-
-### スキル (skills.astro)
-- カテゴリ別にスキルを表示（技術 / 業務 / マネジメント）
-- 習熟度やカテゴリでフィルタリング可能
+- frontmatterに title, description, tags, date を持つ
 
 ### ブログ (blog/)
 - Astro Content Collections で記事管理
@@ -143,27 +137,14 @@ deploy.ymlは公式のwithastro/action@v5を使用する。
 
 ## コンテンツ管理
 
-ブログ記事のfrontmatter例:
-
-```markdown
----
-title: "おしえてタケヤくん開発記"
-description: "社内チャットボットをNext.js + Gemini APIで構築した話"
-date: 2025-12-01
-tags: ["AI", "Next.js", "社内DX"]
-draft: false
----
-```
-
 プロジェクトのfrontmatter例:
 
 ```markdown
 ---
-title: "おしえてタケヤくん"
-description: "社内向けAIチャットボットシステム"
+title: "社内ナレッジAIチャットボット"
+description: "社内規定やFAQをAIが検索・回答するチャットボット"
 tags: ["Next.js", "Gemini API", "TypeScript"]
 date: 2025-06-01
-thumbnail: "./images/takeya-kun.png"
 url: ""
 ---
 ```
