@@ -4,9 +4,14 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 
 const allProjects = await getCollection('projects');
-const sortedProjects = allProjects.sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+
+const workProjects = allProjects
+  .filter((p) => p.data.category === 'work')
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const personalProjects = allProjects
+  .filter((p) => p.data.category === 'personal')
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout title="実績・プロジェクト" description="これまでに携わったプロジェクトや実績を紹介します。">
@@ -15,35 +20,54 @@ const sortedProjects = allProjects.sort(
       <h1 class="text-3xl md:text-4xl font-medium text-gray-900 dark:text-gray-100 mb-4">
         実績・プロジェクト
       </h1>
-      <p class="text-gray-600 dark:text-gray-300 mb-4">
+      <p class="text-gray-600 dark:text-gray-300 mb-12">
         これまでに携わった主なプロジェクトを紹介します。
       </p>
-      <p class="text-gray-600 dark:text-gray-300 mb-8">
-        個人開発は「こういうのほしい」をずっと思っていて、AIでできる時代になったから作ってみたものです。
-      </p>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        {
-          sortedProjects.map((project) => (
-            <ProjectCard
-              title={project.data.title}
-              description={project.data.description}
-              tags={project.data.tags}
-              date={project.data.date.toISOString()}
-              url={project.data.url}
-              slug={project.slug}
-            />
-          ))
-        }
+      <!-- 仕事で作ったもの -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-gray-100 mb-6">
+          仕事で作ったもの
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {
+            workProjects.map((project) => (
+              <ProjectCard
+                title={project.data.title}
+                description={project.data.description}
+                tags={project.data.tags}
+                date={project.data.date.toISOString()}
+                url={project.data.url}
+                slug={project.slug}
+              />
+            ))
+          }
+        </div>
       </div>
 
-      {sortedProjects.length === 0 && (
-        <div class="text-center py-12">
-          <p class="text-gray-500 dark:text-gray-400">
-            プロジェクトはまだ登録されていません。
-          </p>
+      <!-- 個人開発 -->
+      <div>
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-gray-100 mb-2">
+          個人開発
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          学習目的で開発。思ったより良いものができたのでリリース。
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          {
+            personalProjects.map((project) => (
+              <ProjectCard
+                title={project.data.title}
+                description={project.data.description}
+                tags={project.data.tags}
+                date={project.data.date.toISOString()}
+                url={project.data.url}
+                slug={project.slug}
+              />
+            ))
+          }
         </div>
-      )}
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -10,13 +10,11 @@ interface Props {
 
 const { title, description, tags, date, url, slug } = Astro.props;
 
-const formattedDate = new Date(date).toLocaleDateString('ja-JP', {
-  year: 'numeric',
-  month: 'long',
-});
+const d = new Date(date);
+const formattedDate = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}`;
 ---
 
-<article class="group bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow">
+<article class="group bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
   <div class="p-6">
     <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
       <time datetime={date}>{formattedDate}</time>

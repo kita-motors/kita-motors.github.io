@@ -3,6 +3,7 @@ title: "Auto Log"
 description: "車とバイクの給油記録・メンテナンス管理を行うAndroidアプリ。燃費自動計算、リマインダー通知、データのエクスポート/インポートに対応。"
 tags: ["Kotlin", "Android", "Room", "MVVM", "WorkManager"]
 date: 2026-02-02
+category: "personal"
 ---
 
 ## プロジェクト概要

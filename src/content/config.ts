@@ -19,6 +19,7 @@ const projectsCollection = defineCollection({
     tags: z.array(z.string()),
     date: z.date(),
     url: z.string().optional(),
+    category: z.enum(['work', 'personal']),
   }),
 });
 

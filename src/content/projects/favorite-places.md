@@ -3,6 +3,7 @@ title: "Favorite Places"
 description: "Google Mapsのお気に入りを活用したAndroid Auto対応のPOI通知アプリ。ドライブ中に登録地点の近くを通ると自動で通知。"
 tags: ["Kotlin", "Android Auto", "Hilt", "Coroutines", "Car App Library"]
 date: 2026-02-03
+category: "personal"
 ---
 
 ## プロジェクト概要

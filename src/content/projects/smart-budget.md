@@ -3,6 +3,7 @@ title: "SmartBudget"
 description: "家事の見える化を実現する統合家計管理アプリ。在庫管理、買い物リスト、カレンダー、家計簿を一元管理。"
 tags: ["Kotlin", "Jetpack Compose", "Room", "Clean Architecture"]
 date: 2026-01-01
+category: "personal"
 ---
 
 ## プロジェクト概要
