@@ -8,7 +8,9 @@ category: "personal"
 
 ## プロジェクト概要
 
-Auto Logは、車やバイクの給油記録とメンテナンス管理を行うAndroidアプリケーションです。Google Play Store公開に向けて開発を進めています。
+Auto Logは、車やバイクの給油記録とメンテナンス管理を行うAndroidアプリケーションです。Google Play Storeで公開中です。
+
+[Google Play Store](https://play.google.com/store/apps/details?id=com.kitamotors.autolog)
 
 ## 主な機能
 
@@ -50,8 +52,8 @@ Auto Logは、車やバイクの給油記録とメンテナンス管理を行う
 
 ## 開発状況
 
-Google Play Store公開に向けて準備中。クローズドテストの審査に提出済み（2026年1月）。
+Google Play Storeで公開中（2026年2月〜）。
 
 ## 私の役割
 
-個人開発プロジェクトとして、企画・設計・実装・ストア公開準備まで全て担当。
+個人開発プロジェクトとして、企画・設計・実装・ストア公開まで全て担当。
