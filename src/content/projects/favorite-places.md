@@ -1,6 +1,6 @@
 ---
-title: "Favorite Places"
-description: "Google Mapsのお気に入りを活用したAndroid Auto対応のPOI通知アプリ。ドライブ中に登録地点の近くを通ると自動で通知。"
+title: "FavSort"
+description: "Google Mapsのお気に入りをインポートするだけで自動分類。Android Auto対応で、ドライブ中に登録地点の近くを通ると自動通知。"
 tags: ["Kotlin", "Android Auto", "Hilt", "Coroutines", "Car App Library"]
 date: 2026-02-03
 category: "personal"
@@ -8,38 +8,33 @@ category: "personal"
 
 ## プロジェクト概要
 
-Favorite Placesは、Google Mapsのお気に入りデータを活用した無料のスポット通知アプリです。ドライブ中に登録したお気に入り地点の近くを通ると自動で通知してくれます。
+FavSortは、Google Mapsのお気に入りデータをインポートするだけで自動分類し、ドライブ中に近くのスポットを通知してくれるAndroidアプリです。Android Auto対応で、車載ディスプレイから直感的に操作できます。
 
 ## 主な機能
 
-### お気に入り管理
-- Google MapsからエクスポートしたGeoJSON形式のお気に入りデータを読み込み
-- カテゴリフィルター（ガソリンスタンド、レストラン、観光地など）で絞り込み
+### 自動分類・管理
+- Google TakeoutのZIPファイルをそのまま選択するだけでインポート完了
+- インポート時にガソリンスタンド・飲食店・観光地など15種に自動分類
+- 手動補正を蓄積し、共通パターンを学習して分類精度を向上
+
+### 近接通知
+- ドライブ中にお気に入り地点の近くを通ると自動通知
+- 通知距離・間隔・通知音・バイブのカスタマイズ
+- 未訪問フィルター・進行方向フィルター・速度適応通知に対応
 
 ### Android Auto対応
-- 車載ディスプレイでお気に入りリストを表示
-- ナビゲーション中に近くのお気に入り地点を自動通知
+- POIカテゴリとして認識され、地図+リスト表示で近くのスポットを確認
+- カテゴリ別・都道府県別のブラウジング
 - 通知またはリストからGoogle Mapsナビを直接起動
+
+### 検索・フィルタリング
+- カテゴリフィルター（15種）
+- 都道府県フィルター（スマホ・Android Auto両対応）
+- 現在地からの距離順ソート・名前・住所検索
 
 ### カスタマイズ
 - テーマ切り替え（ブルー/グリーン/モノトーン）
 - ダークモード対応（システム設定に連動 + 手動切り替え）
-
-## アーキテクチャ
-
-MVVM + Repository パターンを採用。
-
-```
-com.kita.favoriteplaces/
-├── di/                  # Hilt DIモジュール
-├── data/
-│   ├── model/           # データモデル
-│   ├── repository/      # リポジトリ
-│   └── location/        # 位置情報ロジック
-├── ui/                  # メイン画面・設定画面
-├── auto/                # Android Auto関連
-└── service/             # バックグラウンドサービス
-```
 
 ## 技術スタック
 
@@ -49,12 +44,6 @@ com.kita.favoriteplaces/
 - **Android Auto**: Car App Library
 - **暗号化**: AndroidX Security Crypto
 - **JSON**: Gson
-
-## 今後の予定
-
-- v1.0: Google Play Store公開（AdMob広告実装、インポートガイド追加）
-- v1.1: 通知設定カスタマイズ、検索機能、スマホ単体での通知対応
-- v2.0: Jetpack Compose移行、訪問ポイント機能
 
 ## 私の役割
 
